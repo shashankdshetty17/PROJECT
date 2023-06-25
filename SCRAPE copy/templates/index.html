@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #progressContainer {
+            width: 100%;
+            height: 10px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background-color: #007bff;
+            transition: width 0.5s ease;
+        }
+
+        #resultContainer {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #resultContainer h2 {
+            margin-top: 0;
+        }
+
+        #resultContainer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Review Analysis</h1>
+    <form method="POST">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+        <br>
+        <label for="model">Select Model:</label>
+        <select id="model" name="model" required>
+            <option value="1">Model 1</option>
+            <option value="2">Model 2</option>
+            <option value="3">Model 3</option>
+            <option value="4">Model 4</option>
+            <option value="5">Model 5</option>
+        </select>
+        <br>
+        <button type="submit" id="startButton">Start</button>
+    </form>
+
+    <div id="progressContainer">
+        <div id="progressBar"></div>
+    </div>
+
+    {% if session['predict_result'] %}
+    <div id="resultContainer">
+        <h2>Prediction Result:</h2>
+        <p>{{ session['predict_result'] }}</p>
+    </div>
+    {% endif %}
+
+    <script >
+        document.getElementById('startButton').addEventListener('click', function () {
+            var progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '0%';
+        
+            setTimeout(function () {
+                progressBar.style.width = '20%';
+            }, 1000);
+        
+            setTimeout(function () {
+                progressBar.style.width = '40%';
+            }, 3000);
+        
+            setTimeout(function () {
+                progressBar.style.width = '60%';
+            }, 5000);
+        
+            setTimeout(function () {
+                progressBar.style.width = '70%';
+            }, 8000);
+        
+            setTimeout(function () {
+                progressBar.style.width = '80%';
+                s();
+            }, 10000);
+            function s(){
+                progressBar.style.width = '85%';
+            }
+        });
+        
+    </script>
+</body>
+</html>
